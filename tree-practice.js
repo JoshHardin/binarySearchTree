@@ -73,15 +73,25 @@ function getHeight (rootNode) {
 }
 
 function balancedTree (rootNode) {
-   
+  if (!rootNode) return true;
+
+  const leftHeight = getHeight(rootNode.left)
+  const rightHeight = getHeight(rootNode.right)
+
+  if ((leftHeight - rightHeight) > 1 || (rightHeight - leftHeight) > 1) return false;
+  return true;
 }
 
 function countNodes (rootNode) {
-  // Your code here 
+  if (!rootNode) return 0;
+
+  return 1 + countNodes(rootNode.left) + countNodes(rootNode.right)
 }
 
 function getParentNode (rootNode, target) {
-  // Your code here 
+  if (!rootNode) return null;
+  
+  if (rootNode.left && rootNode.left.value === target) return rootNode;
 }
 
 function inOrderPredecessor (rootNode, target) {
